@@ -1,21 +1,63 @@
 <!-- 
-La prima parte, dal titolo “Informazioni Anagrafiche”, deve consentire i seguenti input:
-Nome, Cognome, Codice Fiscale, Data di nascita, Luogo di Nascita, Indirizzo.
+Scrivere il codice HTML5 valido, ben formato, accessibile (WCAG 2.0, livello A) 
+e semanticamente corretto per realizzare un documento che contenga una intestazione 
+di primo livello “Contatti” e un form diviso in due parti:
 
-La seconda parte, dal titolo “Preferenze”, deve consentire i seguenti input:
-Assicurazione, a scelta (radio) tra Primo Livello, Secondo Livello e Terzo Livello.
-Mezzo Preferito (select) a scelta tra Automobile, Moto, Bicicletta e Monopattino.
-Automunito (checkbox).
-Descrizione (textarea).
-Bottoni di Submit e Cancella della form. -->
+    1. La prima parte, dal titolo “Informazioni Anagrafiche”, deve consentire i seguenti input:
+        Nome, Cognome, Codice Fiscale, Data di nascita, Luogo di Nascita, Indirizzo.
+    2. La seconda parte, dal titolo “Preferenze”, deve consentire i seguenti input:
+        Assicurazione, a scelta (radio) tra Primo Livello, Secondo Livello e Terzo Livello.
+        Mezzo Preferito (select) a scelta tra Automobile, Moto, Bicicletta e Monopattino.
+        Automunito (checkbox).
+        Descrizione (textarea).
+    3. Bottoni di Submit e Cancella della form.
+ -->
 
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title>Informazioni Anagrafiche</title>
+        <title>Contatti</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <h1>Contatti</h1>
+        <form method="post">
+            <fieldset>
+                <legend>Informazioni Anagrafiche</legend>
+                <label>Nome <input type="text" id="nome" name="nome" placeholder="Inserisci il tuo nome"/></label><br/>
+                <label>Cognome <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome"/></label><br/>
+                <label>Codice Fiscale <input type="text" id="codFiscale" name="codFiscale" placeholder="Inserisci il tuo codice fiscale" maxlength="16"/></label><br/>
+                <label>Data di nascita <input type="date" id="dataNascita" name="dataNascita"/></label><br/>
+                <label>Luogo di nascita <input type="text" id="luogoNascita" name="luogoNascita" placeholder="Inserisci il tuo luogo di nascita" /></label><br/>
+                <label>Indirizzo <input type="text" id="indirizzo" name="indirizzo" placeholder="Inserisci il tuo indirizzo" /></label><br/>
+            </fieldset>
+            <fieldset>
+                <legend>Preferenze</legend>
+                <p>Assicurazione</p>
+                <input type="radio" id="primoLivello" name="assicurazione" value="1">
+                <label for="primoLivello">Primo Livello</label><br>
+                <input type="radio" id="secondoLivello" name="assicurazione" value="2">
+                <label for="secondoLivello">Secondo Livello</label><br>
+                <input type="radio" id="terzoLivello" name="assicurazione" value="3">
+                <label for="terzoLivello">Terzo Livello</label><br/><br/>
 
+                <label for="mezzoPreferito">Mezzo preferito</label> 
+                <select name="mezzoPreferito" id="mezzoPreferito">
+                    <option value="automobile">Automobile</option>
+                    <option value="moto">Moto</option>
+                    <option value="bicicletta">Bicicletta</option>
+                    <option value="monopattino">Monopattino</option>
+                </select><br/>
+                
+                <input type="checkbox" id="automunito" name="automunito" value="automunito">
+                <label for="automunito">Automunito</label><br/>
+
+                <label for="descrizione">Descrizione</label>
+                <textarea id="descrizione" name="descrizione" rows="5" cols="50"></textarea>
+            </fieldset>
+            <br/>
+            <input type="reset" value="Cancella"/>
+            <input type="submit" name="submit" value="Invia"/>
+        </form>
     </body>
 </html>
