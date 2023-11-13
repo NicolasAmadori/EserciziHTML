@@ -1,54 +1,23 @@
-/* 
+/*
+Tutti i font devono avere la stessa font-family, che deve essere monospace. La dimensione deve essere del 100%
+ in che senso 100%?
 
-DONE Tutti i font devono avere la stessa font-family, che deve essere monospace.
-    TODO La dimensione deve essere del 100%. 
+I link in <nav> in caso di hover vengono mostrati con sfondo viola, colore bianco, in grassetto e con un padding pari ad almeno l’1%.
+1% di padding?
 
-QUESTION L’elemento di intestazione <header> ha come sfondo un gradiente che varia dai seguenti colori (in diagonale, dall’angolo in alto a sinistra all’angolo in basso a destra): rosa, giallo, rosa, viola.
-    TODO La sua larghezza è pari al 100%.
-    TODO Margin e padding devono essere simili a quelli riportati nello screenshot.
-    TODO Il bordo inferiore è di colore viola
-    TODO ed ha uno spessore simile a quello mostrato nello screenshot.
-
-QUESTION Il testo in <header> è di colore viola ed è allineato a destra.
-
-TODO L’elemento <nav>, l’elemento <aside> e l’elemento <section> sono affiancati, uno accanto all’altro.
-
-TODO L’elemento <section> deve occupare il 50% della larghezza
-    TODO e deve avere padding e margin simili a quelli mostrati nello screenshot.
-
-DONE I paragrafi figli di <section> sono allineati sinistra e il testo è di colore nero.
-
-TODO L’elemento <nav> deve occupare il 15% della larghezza
-    TODO e deve avere padding e margini simili a quelli mostrati nello screenshot.
-
-DONE Gli elementi della lista in <nav> mostrano un quadratino come simbolo
-    TODO sono allineati a sinistra
-    TODO ed hanno interlinea pari a 2 volte il valore di default.
-    TODO Lo sfondo di <nav> consiste in un gradiente uguale a quello di <header>
-
-TODO I link in <nav> in caso di hover vengono mostrati con sfondo viola, colore bianco, in grassetto 
-    TODO e con un padding pari ad almeno l’1%.
-
-TODO In caso di hover sull’elelmento <nav> allora l’ordine dei colori del gradiente viene invertito.
-
-TODO L’elemento <aside> deve occupare il 20% della larghezza e i suoi paragrafi devono avere colore viola.
-
-DONE L’elemento <footer> ha come sfondo un gradiente che varia dai seguenti colori (in diagonale, dall’angolo in basso a destra all’angolo in alto a sinistra): rosa, giallo, rosa, viola. 
-    DONE La sua larghezza è pari al 100%. 
-    TODO Margin e padding devono essere simili a quelli riportati nello screenshot.
-
-DONE Il testo in <footer> è di colore viola, è allineato al centro ed ha una dimensione pari all’80%. 
 
 */
-
 * {
     font-family: monospace;
 }
 
 header {
+    box-sizing: border-box;
     background: linear-gradient(to bottom right, pink, yellow, pink, purple);
-    padding: 10px;
+    padding: 25px 0;
     border-bottom: medium solid purple;
+    width: 100%;
+    margin: 10px 0;
 }
 
 header h1 {
@@ -57,19 +26,17 @@ header h1 {
 }
 
 nav, aside {
+    box-sizing: border-box;
     float: left;
-    width: 25%;
-}
-
-section {
-    float: right;
-    width: 50%;
 }
 
 nav {
     background: linear-gradient(to bottom right, pink, yellow, pink, purple);
     border-bottom: medium solid purple;
     border-top: medium solid purple;
+    width: 15%;
+    padding: 10px 7px;
+    margin: 0 40px 0 10px;
 }
 
 nav:hover{
@@ -89,8 +56,23 @@ nav ul li a:hover{
     text-decoration: none;
 }
 
+aside {
+    margin: 0 20px 0 0;
+    padding: 10px 22px;
+    width: 20%;
+    border: medium solid red;
+}
+
 aside > p {
     color:purple;
+}
+
+section {
+    float: right;
+    width: 50%;
+    padding: 0 30px;
+    border: medium solid red;
+    margin-bottom: 20px;
 }
 
 section p {
@@ -104,6 +86,7 @@ footer {
     width: 100%;
     border-top: medium solid purple;
     padding: 20px 0;
+    margin: 100px 0;
 }
 
 footer p {
