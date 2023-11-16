@@ -1,32 +1,19 @@
-/*
-Tutti i font devono avere la stessa font-family, che deve essere monospace. La dimensione deve essere del 100%
- in che senso 100%?
-
-I link in <nav> in caso di hover vengono mostrati con sfondo viola, colore bianco, in grassetto e con un padding pari ad almeno l’1%.
-1% di padding?
-
-
-*/
-* {
+body {
+    font-size: 100%;
     font-family: monospace;
 }
 
 header {
-    box-sizing: border-box;
     background: linear-gradient(to bottom right, pink, yellow, pink, purple);
     padding: 25px 0;
     border-bottom: medium solid purple;
     width: 100%;
     margin: 10px 0;
-}
-
-header h1 {
     color: purple;
     text-align: right;
 }
 
 nav, aside {
-    box-sizing: border-box;
     float: left;
 }
 
@@ -35,7 +22,7 @@ nav {
     border-bottom: medium solid purple;
     border-top: medium solid purple;
     width: 15%;
-    padding: 10px 7px;
+    padding: 10px 0;
     margin: 0 40px 0 10px;
 }
 
@@ -46,7 +33,7 @@ nav:hover{
 nav ul li{
     list-style: square;
     text-align: left;
-    line-height: 200%;
+    line-height: 2;
 }
 
 nav ul li a:hover{
@@ -54,13 +41,13 @@ nav ul li a:hover{
     color: white;
     font-weight: bold;
     text-decoration: none;
+    padding: 1%;
 }
 
 aside {
     margin: 0 20px 0 0;
     padding: 10px 22px;
-    width: 20%;
-    border: medium solid red;
+    width: 15%;
 }
 
 aside > p {
@@ -70,8 +57,7 @@ aside > p {
 section {
     float: right;
     width: 50%;
-    padding: 0 30px;
-    border: medium solid red;
+    padding: 0 20px;
     margin-bottom: 20px;
 }
 
@@ -86,7 +72,6 @@ footer {
     width: 100%;
     border-top: medium solid purple;
     padding: 20px 0;
-    margin: 100px 0;
 }
 
 footer p {
