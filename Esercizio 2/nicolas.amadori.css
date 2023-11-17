@@ -23,7 +23,7 @@ nav {
     border-top: medium solid purple;
     width: 15%;
     padding: 10px 0;
-    margin: 0 40px 0 10px;
+    margin: 0 20px 0 10px;
 }
 
 nav:hover{
@@ -47,7 +47,7 @@ nav ul li a:hover{
 aside {
     margin: 0 20px 0 0;
     padding: 10px 22px;
-    width: 15%;
+    width: 20%;
 }
 
 aside > p {
@@ -77,6 +77,6 @@ footer {
 footer p {
     color: purple;
     text-align: center;
-    width: 80%;
+    font-size: 80%;
     margin: auto;
 }
