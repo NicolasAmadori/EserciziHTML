@@ -9,7 +9,7 @@ window.onload = function load(){
         });
     }
 
-    immagini[0].click();//All'inizio l'immagine "current" deve essere la prima.
+    imgClick(0);//All'inizio l'immagine "current" deve essere la prima.
 }
 
 function imgClick(index){
