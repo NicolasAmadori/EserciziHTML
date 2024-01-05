@@ -46,12 +46,11 @@
     $stmtA = $conn->prepare("SELECT valore FROM insiemi WHERE insieme = ?");
     $stmtA->bind_param('i', $valA);
     $stmtA->execute();
+    $resultA = $stmtA->get_result();
 
     $stmtB = $conn->prepare("SELECT valore FROM insiemi WHERE insieme = ?");
     $stmtB->bind_param('i', $valB);
     $stmtB->execute();
-
-    $resultA = $stmtA->get_result();
     $resultB = $stmtB->get_result();
 
     if ($resultA && $resultB) {
@@ -66,10 +65,10 @@
             $valuesB[] = $r['valore'];
         }
 
-        $nuovoInsieme = ($valO === 'u') ? array_merge($valuesA, $valuesB) : array_intersect($valuesA, $valuesB);
+        $nuovoInsieme = ($valO === 'u') ? array_unique(array_merge($valuesA, $valuesB)) : array_intersect($valuesA, $valuesB);
 
         //Ottenimento dell'id per il nuovo insieme
-        $maxIdResult = $conn->query("SELECT MAX('id') AS max_id FROM insiemi");
+        $maxIdResult = $conn->query("SELECT MAX(`insieme`) AS max_id FROM insiemi");
         $maxId = ($maxIdResult->fetch_assoc())['max_id'];
         $newId = $maxId + 1;
 
