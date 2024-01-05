@@ -22,25 +22,37 @@
     $dbname = "giugno";
 
     if(!isset($_GET['A']) || !isset($_GET['B']) || !isset($_GET['O'])) {
-        die("Manca almeno un parametro tra A, B e O.");
+        die("Almeno un parametro tra A, B e O non è stato settato.");
     }
 
     $valA = $_GET['A'];
     $valB = $_GET['B'];
     $valO = $_GET['O'];
+    
+    if($valA == "" || $valB == "" || $valO == "") {
+        die("Almeno un parametro tra A, B e O è vuoto.");
+    }
 
     if (!is_numeric($valA) || !is_numeric($valB) || $valA < 0 || $valB < 0) {
         die("A e B devono essere valori interi positivi.");
     }
 
-    if (is_null($valO) || ($valO != "i" && $valO != "u")) {
-        die("Valore di O non corretto.");
+    if ($valO != "i" && $valO != "u") {
+        die("Il valore di O deve essere u o i.");
     }
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Errore di connessione al database: " . $conn->connect_error);
+    }
+
+    $maxIdResult = $conn->query("SELECT MAX(`insieme`) AS max_id FROM insiemi");
+    $maxId = ($maxIdResult->fetch_assoc())['max_id'];
+
+    if($valA > $maxId || $valB > $maxId) {
+        $conn->close();
+        die("Almeno uno dei due insiemi non esiste nel database.");
     }
 
     $stmtA = $conn->prepare("SELECT valore FROM insiemi WHERE insieme = ?");
@@ -67,10 +79,7 @@
 
         $nuovoInsieme = ($valO === 'u') ? array_unique(array_merge($valuesA, $valuesB)) : array_intersect($valuesA, $valuesB);
 
-        //Ottenimento dell'id per il nuovo insieme
-        $maxIdResult = $conn->query("SELECT MAX(`insieme`) AS max_id FROM insiemi");
-        $maxId = ($maxIdResult->fetch_assoc())['max_id'];
-        $newId = $maxId + 1;
+        $newId = $maxId + 1; //Ottenimento dell'id per il nuovo insieme
 
         foreach ($nuovoInsieme as $value) {
             $conn->query("INSERT INTO insiemi (`valore`, `insieme`) VALUES ($value, $newId)");
